@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                             };
                             thread.start();
 
+                        } else if(command == 3) {
+                            if(activity.mVideoFile != null && activity.mVideoFile.exists()) {
+                                activity.mVideoFile.delete();
+                            }
                         }
                         break;
                     case MESSAGE_START_RECORD:
@@ -256,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
                     .VideoSource.CAMERA);
 
             mRecorder.setProfile(CamcorderProfile
-                    .get(CamcorderProfile.QUALITY_HIGH));
+                    .get(CamcorderProfile.QUALITY_480P));
 
             mRecorder.setOutputFile(mVideoFile.getAbsolutePath());
             mRecorder.prepare();
